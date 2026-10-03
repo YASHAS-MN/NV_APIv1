@@ -10,8 +10,8 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # For local dev
-    allow_credentials=True,
+    allow_origins=["*"],  # For local dev — enumerate specific origins in production
+    allow_credentials=False,  # Cannot combine wildcard origin with credentials=True (CORS spec)
     allow_methods=["*"],
     allow_headers=["*"],
 )

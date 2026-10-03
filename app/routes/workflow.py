@@ -63,7 +63,7 @@ async def submit_workflow(file: UploadFile = File(...)):
         transcript_hash = result_dict.get("hash")
         sandbox_version = "0.1.0"
         
-        if sandbox_decision not in ("ACCEPT", "CONTINUE"):
+        if sandbox_decision is None or sandbox_decision not in ("ACCEPT", "CONTINUE"):
             # Just return the sandbox failure, do not request verification
             return {
                 "status": "rejected",
